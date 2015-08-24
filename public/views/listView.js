@@ -36,6 +36,7 @@ ListView.prototype = {
       self.updateList();
     });
   },
+
   toggleButton: function(contentsDiv){
     if(contentsDiv.is(":visible")){
       contentsDiv.siblings("button.showContents").text("Hide Contents");
@@ -43,6 +44,7 @@ ListView.prototype = {
       contentsDiv.siblings("button.showContents").text("Show Contents");
     }
   },
+
   toggleContents: function(contentsDiv){
     var self = this;
     // if not in DOM, populate
@@ -62,12 +64,14 @@ ListView.prototype = {
       contentsDiv.append(contentView.render());
     });
   },
+
   updateList: function() {
     var self = this;
     var data = {  name:   $('input[name=name]').val(),
-                  author: $('input[name=author]').val(),
+                  author: $('input[name=author]').val() };
     self.list.update(data).then(function() { self.render(); });
   },
+
   listTemplate: function(list){
     var html = $("<div>");
     html.append("<h3>" + list.name + "</h3>");
@@ -84,3 +88,5 @@ ListView.prototype = {
     html.append("<button class='updateList'>Update List</button>");
     return(html);
   }
+
+};
