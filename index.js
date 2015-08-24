@@ -1,6 +1,10 @@
 var express = require("express");
 var app = express();
+var path = require("path");
 var bodyParser = require("body-parser");
+
+app.use("/public", express.static(path.join(__dirname + "/public")));
+app.set("view engine", "hbs");
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
@@ -10,7 +14,7 @@ var contentsController = require("./controllers/contents");
 
 
 app.get("/", function(req, res){
-  res.send("hot damn, what a sweet bucket list!")
+  res.render("index", {})
 });
 
 
