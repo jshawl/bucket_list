@@ -8,27 +8,47 @@ function error(response, message){
 }
 
 router.get("/lists", function(req, res){
-  res.send("these are our buckets")
+  List.findAll({order: "id"}).then(function(lists){
+    res.json(lists);
+  });
 });
 
 router.post("/lists", function(req, res){
-  res.send("create a new bucket")
+  List.create(req.body).then(function(list){
+    res.json(list);
+  });
 });
 
 router.get("/lists/:id", function(req, res){
-  res.send("this is bucket " + req.params.id)
+  List.findById(req.params.id).then(function(list){
+    res.json(list);
+  });
 });
 
-router.get("/lists/:id/contents", function(req, res){
-  res.send("this is the contents of:" + req.params.id)
-});
+// router.get("/lists/:id/contents", function(req, res){
+//   res.json("this is the contents of:" + req.params.id)
+// });
 
 router.patch("/lists/:id", function(req, res){
-  res.send("this is the update page for:" + req.params.id)
+  List.findById(req.params.id)
+  .then(function(list){
+    if(!list) return error(res, "not found");
+    return list.updateAttributes(req.body);
+  })
+  .then(function(list){
+    res.json(list);
+  });
 });
 
 router.delete("/lists/:id", function(req, res){
-  res.send("this is the delete page for:" + req.params.id)
+  List.findById(req.params.id)
+  .then(function(list){
+    if(!list) return error(res, "not found");
+    return list.destroy()
+  })
+  .then(function(list){
+    res.json(list)
+  });
 });
 
 module.exports = router;
