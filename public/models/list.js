@@ -18,7 +18,21 @@ List.fetch = function() {
     console.log("list fetch failed to load")
   })
   return request
-}
+};
+
+List.create = function(listData) {
+  var self = this;
+  var url = "http://localhost:3000/lists";
+  var request = $.ajax({
+    url: url,
+    method: "post",
+    data: JSON.stringify(listData),
+    contentType : 'application/json'
+  }).then(function(listData) {
+    return new List(listData);
+  });
+  return request;
+};
 
 List.prototype = {
   fetchContents: function(){
@@ -38,16 +52,20 @@ List.prototype = {
   },
   update: function(listData) {
     var self = this;
-
     var url = "http://localhost:3000/lists/" + this.id;
     var request = $.ajax({
       url: url,
-      method: "patch",
+      method: "put",
       data: JSON.stringify(listData),
       contentType : 'application/json'
     }).then(
       function(updatedListInfo) {self.reload(updatedListInfo);}
     );
+    return request;
+  },
+  delete: function(){
+    var url = "http://localhost:3000/lists/" + this.id;
+    var request = $.ajax( {url: url, method: "delete"});
     return request;
   },
   reload: function(newData){

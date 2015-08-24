@@ -15,6 +15,7 @@ ListView.prototype = {
 
     var showButton  = self.$el.find(".showContents");
     var editButton  = self.$el.find(".editList");
+    var deleteButton = self.$el.find(".deleteList");
     var contentsDiv = self.$el.find("div.contents");
 
     contentsDiv.hide(); // hide div until it's populated with contents
@@ -35,7 +36,14 @@ ListView.prototype = {
     self.$el.find(".updateList").on("click", function() {
       self.updateList();
     });
+
+    self.$el.find(".deleteList").on("click", function(){
+      self.list.delete().then(function(){
+        self.$el.fadeOut()
+      });
+    });
   },
+
   toggleButton: function(contentsDiv){
     if(contentsDiv.is(":visible")){
       contentsDiv.siblings("button.showContents").text("Hide Contents");
@@ -43,6 +51,7 @@ ListView.prototype = {
       contentsDiv.siblings("button.showContents").text("Show Contents");
     }
   },
+
   toggleContents: function(contentsDiv){
     var self = this;
     // if not in DOM, populate
@@ -62,12 +71,14 @@ ListView.prototype = {
       contentsDiv.append(contentView.render());
     });
   },
+
   updateList: function() {
     var self = this;
     var data = {  name:   $('input[name=name]').val(),
-                  author: $('input[name=author]').val(),
+                  author: $('input[name=author]').val() };
     self.list.update(data).then(function() { self.render(); });
   },
+
   listTemplate: function(list){
     var html = $("<div>");
     html.append("<h3>" + list.name + "</h3>");
@@ -77,10 +88,14 @@ ListView.prototype = {
     html.append("<div class='contents'></div>");
     return(html);
   },
+  
   listEditTemplate: function(list) {
     var html = $("<div>");
     html.append("<input name='name' value='" + list.name + "'>");
     html.append("<input name='author' value='" + list.author + "'>");
     html.append("<button class='updateList'>Update List</button>");
+    html.append("<button class='deleteList'>Delete List</button>");
     return(html);
   }
+
+};
