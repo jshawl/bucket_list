@@ -15,6 +15,7 @@ ListView.prototype = {
 
     var showButton  = self.$el.find(".showContents");
     var editButton  = self.$el.find(".editList");
+    var deleteButton = self.$el.find(".deleteList");
     var contentsDiv = self.$el.find("div.contents");
 
     contentsDiv.hide(); // hide div until it's populated with contents
@@ -34,6 +35,12 @@ ListView.prototype = {
 
     self.$el.find(".updateList").on("click", function() {
       self.updateList();
+    });
+
+    self.$el.find(".deleteList").on("click", function(){
+      self.list.delete().then(function(){
+        self.$el.fadeOut()
+      });
     });
   },
 
@@ -86,6 +93,7 @@ ListView.prototype = {
     html.append("<input name='name' value='" + list.name + "'>");
     html.append("<input name='author' value='" + list.author + "'>");
     html.append("<button class='updateList'>Update List</button>");
+    html.append("<button class='deleteList'>Delete List</button>");
     return(html);
   }
 

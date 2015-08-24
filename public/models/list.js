@@ -49,6 +49,11 @@ List.prototype = {
     );
     return request;
   },
+  delete: function(){
+    var url = "http://localhost:3000/lists/" + this.id;
+    var request = $.ajax( {url: url, method: "delete"});
+    return request;
+  },
   reload: function(newData){
     for(var attrname in newData) {
       this[attrname] = newData[attrname];
