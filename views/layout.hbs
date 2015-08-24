@@ -7,11 +7,22 @@
     <script src="/public/models/list.js"></script>
     <script src="/public/models/content.js"></script>
     <script src="/public/views/listView.js"></script>
+    <script src="/public/views/newListView.js"></script>
     <script src="/public/views/contentView.js"></script>
     <script src="/public/script.js"></script>
   </head>
   <body>
     <header><h1>Bucket List</h1></header>
+
+    <div class="newListView">
+      <button class="addList">Add List</button>
+      <form class="newList">
+        <input name='name' placeholder="list name">
+        <input name='author' placeholder = "list author">
+        <button class='createList'>Create List</button>
+      </form>
+    </div>
+
     {{{ body }}}
 
   </body>

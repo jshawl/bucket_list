@@ -81,6 +81,7 @@ ListView.prototype = {
     html.append("<div class='contents'></div>");
     return(html);
   },
+  
   listEditTemplate: function(list) {
     var html = $("<div>");
     html.append("<input name='name' value='" + list.name + "'>");
