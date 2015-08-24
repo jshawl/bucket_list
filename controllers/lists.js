@@ -29,7 +29,7 @@ router.get("/lists/:id", function(req, res){
 //   res.json("this is the contents of:" + req.params.id)
 // });
 
-router.patch("/lists/:id", function(req, res){
+router.put("/lists/:id", function(req, res){
   List.findById(req.params.id)
   .then(function(list){
     if(!list) return error(res, "not found");
