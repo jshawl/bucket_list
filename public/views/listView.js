@@ -52,16 +52,16 @@ ListView.prototype = {
 
   toggleButton: function(contentsDiv){
     if(contentsDiv.is(":visible")){
-      contentsDiv.siblings("button.showContents").text("Hide Contents");
+      contentsDiv.siblings("button.showContents").text("Hide the details");
     } else {
-      contentsDiv.siblings("button.showContents").text("Show Contents");
+      contentsDiv.siblings("button.showContents").text("Gimme the deets!");
     }
   },
   giphyButton: function(giphyDiv){
     if(giphyDiv.is(":visible")){
       giphyDiv.siblings("button.showGiphy").text("Hide Giphy");
     } else {
-      giphyDiv.siblings("button.showGiphy").text("Show Giphy");
+      giphyDiv.siblings("button.showGiphy").text("Giphy surprise!");
     }
   },
 
@@ -105,8 +105,9 @@ ListView.prototype = {
 
   updateList: function() {
     var self = this;
-    var data = {  name:   $('input[name=name]').val(),
-                  author: $('input[name=author]').val() };
+    var data = {  author: $('input[name=author]').val(),
+                  name:   $('input[name=name]').val()
+                 };
     self.list.update(data)
     .then(function() { self.render();
     });
@@ -114,11 +115,11 @@ ListView.prototype = {
 
   listTemplate: function(list){
     var html = $("<div>");
-    html.append("<h3>" + list.name + "</h3>");
-    html.append("<h3>" + list.author + "</h3>");
-    html.append("<button class='showContents'>Show Contents</button>");
-    html.append("<button class='showGiphy'>Show Giphy</button>");
-    html.append("<button class='editList'>Edit List</button>");
+    html.append("<h3 class='listAuthor'>" + list.author + "</h3>");
+    html.append("<h3 class='listName'>" + list.name + "</h3>");
+    html.append("<div class='listbuttons'><button class='showContents'>Gimme the Deets</button></div>");
+    html.append("<div class='listbuttons'><button class='showGiphy'>Giphy surprise!</button></div>");
+    html.append("<div class='listbuttons'><button class='editList'>Edit my bucket</button></div>");
     html.append("<div class='contents'></div>");
     html.append("<div class='giphy'></div>")
     return(html);
@@ -126,8 +127,8 @@ ListView.prototype = {
 
   listEditTemplate: function(list) {
     var html = $("<div>");
-    html.append("<input name='name' value='" + list.name + "'>");
     html.append("<input name='author' value='" + list.author + "'>");
+    html.append("<input name='name' value='" + list.name + "'>");
     html.append("<button class='updateList'>Update List</button>");
     html.append("<button class='deleteList'>Delete List</button>");
     return(html);

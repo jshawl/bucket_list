@@ -1,11 +1,7 @@
 
 body{
-  font-size: 100%;
-  font-family: "Lora", serif;
-  background-color: #e7eaf0;
-  padding: 30px;
-  }
-
+  background: #9ACAB5;
+}
 img{
   height: 200px;
   width: 200px;
@@ -17,4 +13,102 @@ img{
   margin: 20px;
   border-width: 2px;
   border-color: #004358;
+
+h1 {
+  font-family: sans-serif;
+  font-weight: bolder;
+  font-size: 56px;
+  text-align: center;
+}
+
+/*ADDING BUCKET ITEM*/
+
+div.newListView {
+  border-top: .3em solid #55466F;
+  border-bottom: .3em solid #55466F;
+  margin-bottom: 20px;
+  padding-top: 20px;
+}
+
+button.addList {
+  background-color: rgba(200, 200, 200, 0.4);
+  color: black;
+  text-decoration: none;
+  width: 10em;
+  line-height: 20px;
+  font-family:monospace;
+  font-size: 24px;
+}
+
+button:hover {
+  background-color: rgba(200, 200, 200, 0.4);
+  color: black;
+  font-weight: bolder;
+}
+
+input {
+    border: 5px solid white;
+    -webkit-box-shadow:
+      inset 0 0 8px  rgba(0,0,0,0.1),
+            0 0 16px rgba(0,0,0,0.1);
+    -moz-box-shadow:
+      inset 0 0 8px  rgba(0,0,0,0.1),
+            0 0 16px rgba(0,0,0,0.1);
+    box-shadow:
+      inset 0 0 8px  rgba(0,0,0,0.1),
+            0 0 16px rgba(0,0,0,0.1);
+    padding: 15px;
+    background: rgba(255,255,255,0.5);
+    margin: 0 0 10px 0;
+}
+
+/*LIST*/
+
+.thebucket {
+  font-family: serif;
+  text-decoration-style: double;
+}
+
+.lists {
+  margin: 0 100px;
+  border: .7em solid white;
+}
+
+.listAuthor {
+  text-transform: uppercase;
+  text-align: center;
+  padding: 20px;
+  /*border-top: 1em solid white;*/
+}
+
+.listName {
+  margin: 0 50px 20px 50px;
+  border: .5em solid #B2EBB4;
+  padding: 2em;
+  font-family: cursive;
+}
+
+.listbuttons {
+  display: inline;
+
+}
+
+button.showContents,
+button.showGiphy,
+button.editList {
+  background-color: #899EAB;
+  color: #fff;
+  border-radius: 25px;
+  padding: 2px;
+  width: 150px;
+  height: 55px;
+  padding: 0 2em;
+  margin: 0 10px;
+}
+
+/*EDIT LIST ITEM*/
+input[name="author"],
+input[name="name"] {
+
+>>>>>>> 83da2e7901d46afca43f8a7e02c0cd0c2bb443ce
 }

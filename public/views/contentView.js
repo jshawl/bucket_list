@@ -8,7 +8,7 @@ ContentView.prototype = {
     return(el)
   },
   giphy: function(){
-    var search = this.content.location; // search query
+    var search = this.content.activity; // search query
     var url = "http://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC&tag='"+search
     $.ajax ({
           url: url,
@@ -16,7 +16,7 @@ ContentView.prototype = {
           dataType: "json"
         }).done(function(response){
           console.log(response.data.image_url)
-          $("body").append("<img src=" + response.data.image_url + ">")
+          $("header").append("<img src=" + response.data.image_url + ">")
         }).fail(function(){
           console.log("ajax request fails!")
         }).always(function(){
