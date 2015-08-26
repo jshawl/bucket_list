@@ -3,9 +3,18 @@ var ContentView = function(content){
 }
 
 ContentView.prototype = {
-  render: function(){
-    var el = $("<p>" + this.content.activity + "</p>");
-    return(el)
+  activity: function(){
+    var activity = $("<li class='activity'>" + this.content.activity + "</li>")
+    return(activity)
+  },
+  location: function(){
+    var location = $("<li class='location'>" + this.content.location + "</li>")
+    return(location)
+  },
+  goal_date: function(){
+    var goal_date = $("<li class='goal_date'>" + this.content.goal_date + "</li>"
+    )
+    return(goal_date);
   },
   giphy: function(){
     var search = this.content.activity; // search query
@@ -42,7 +51,6 @@ ContentView.prototype = {
   var geocodeAddress = function (geocoder, resultsMap) {
 
     var address = document.getElementById('address').value;
-    var address = "Austin, TX"
     geocoder.geocode({'address': address},
     function(results, status) {
       if (status === google.maps.GeocoderStatus.OK) {
