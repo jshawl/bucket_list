@@ -17,7 +17,7 @@ ContentView.prototype = {
     return(goal_date);
   },
   giphy: function(){
-    var search = this.content.location; // search query
+    var search = this.content.activity; // search query
     var url = "http://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC&tag='"+search
     $.ajax ({
           url: url,
@@ -25,7 +25,7 @@ ContentView.prototype = {
           dataType: "json"
         }).done(function(response){
           console.log(response.data.image_url)
-          $("body").append("<li><img src=" + response.data.image_url + "></li>")
+          $("header").append("<img src=" + response.data.image_url + ">")
         }).fail(function(){
           console.log("ajax request fails!")
         }).always(function(){
@@ -34,11 +34,12 @@ ContentView.prototype = {
       }
   }
 
-  var initMap =  function() {
-    var map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 12,
-      center: {lat: 38.9048099, lng: -77.0337394}
-    });
+  // var initMap =  function() {
+  //   var map = new google.maps.Map(document.getElementById('map'), {
+  //     zoom: 12,
+  //     center: {lat: 38.9048099, lng: -77.0337394}
+  //   });
+
 
     var geocoder = new google.maps.Geocoder();
 
