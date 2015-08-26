@@ -3,9 +3,18 @@ var ContentView = function(content){
 }
 
 ContentView.prototype = {
-  render: function(){
-    var el = $("<p>" + this.content.activity + "</p>");
-    return(el)
+  activity: function(){
+    var activity = $("<li>" + this.content.activity + "</li>")
+    return(activity)
+  },
+  location: function(){
+    var location = $("<li>" + this.content.location + "</li>")
+    return(location)
+  },
+  goal_date: function(){
+    var goal_date = $("<li>" + this.content.goal_date + "</li>"
+    )
+    return(goal_date);
   },
   giphy: function(){
     var search = this.content.location; // search query
@@ -16,12 +25,19 @@ ContentView.prototype = {
           dataType: "json"
         }).done(function(response){
           console.log(response.data.image_url)
-          $("body").append("<img src=" + response.data.image_url + ">")
+          $("body").append("<li><img src=" + response.data.image_url + "></li>")
         }).fail(function(){
           console.log("ajax request fails!")
         }).always(function(){
           console.log("this always happens regardless of successful ajax request or not")
         })
+      },
+      newView: function(){
+        var form = $("<form>This is working</form>")
+        console.log(this)
+        // form activity, location, goal_date
+        // event listener
+        // append form to div.contents
       }
   }
 
@@ -41,7 +57,6 @@ ContentView.prototype = {
   var geocodeAddress = function (geocoder, resultsMap) {
 
     var address = document.getElementById('address').value;
-    var address = "Austin, TX"
     geocoder.geocode({'address': address},
     function(results, status) {
       if (status === google.maps.GeocoderStatus.OK) {
