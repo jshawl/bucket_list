@@ -9,12 +9,6 @@ $(document).ready(function(){
 
   new newListView();
 
-$("button.createList").on("click", function(){
-  console.log("click was heard")
-  $("#cat").show();
-})
-
-
 });
 
 // function initMap() {
