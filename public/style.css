@@ -19,7 +19,7 @@ img{
 
 #address, #submit {
   align: center;
-  margin: 20px 300px;
+  display: inline;
 }
 
 h1 {
@@ -80,20 +80,24 @@ input {
 .lists {
   margin: 0 100px;
   border: .7em solid white;
+  width: 35em;
+  float: left
 }
 
 .listAuthor {
   text-transform: uppercase;
   text-align: center;
   padding: 20px;
+  font-family: monospace;
   /*border-top: 1em solid white;*/
 }
 
 .listName {
-  margin: 0 50px 20px 50px;
-  border: .5em solid #B2EBB4;
-  padding: 2em;
+  /*margin: 0 50px 20px 50px;
+  border: .5em solid #B2EBB4;*/
+  padding-left: 2em;
   font-family: cursive;
+
 }
 
 .listbuttons {
@@ -118,5 +122,14 @@ button.editList {
 input[name="author"],
 input[name="name"] {
 
->>>>>>> 83da2e7901d46afca43f8a7e02c0cd0c2bb443ce
+
+}
+
+/*EDIT CONTENTS*/
+div.contents {
+  border: 1em solid #9ACAB5;
+}
+
+li.goal_date {
+  border-bottom: 1em solid #9ACAB5;
 }

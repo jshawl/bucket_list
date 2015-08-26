@@ -106,7 +106,7 @@ ListView.prototype = {
       var submit = $("<button>Edit Content</button>")
       var activity = $("<input placeholder='activity'>")
       var location = $("<input placeholder='location'>")
-      var goal_date = $("<input placeholder='goal_date'>")
+      var goal_date = $("<input placeholder='goal date'>")
       form.append(activity)
       form.append(location)
       form.append(goal_date)
@@ -147,7 +147,7 @@ ListView.prototype = {
       var submit = $("<button>Create Content</button>")
       var activity = $("<input placeholder='activity'>")
       var location = $("<input placeholder='location'>")
-      var goal_date = $("<input placeholder='goal_date'>")
+      var goal_date = $("<input placeholder='goal date'>")
       form.append(activity)
       form.append(location)
       form.append(goal_date)
@@ -193,8 +193,7 @@ ListView.prototype = {
 
   listTemplate: function(list){
     var html = $("<div>");
-    html.append("<h3 class='listAuthor'>" + list.author + "</h3>");
-    html.append("<h3 class='listName'>" + list.name + "</h3>");
+    html.append("<h3 class='listName'>" + list.name + ", <span class='listAuthor'>" + list.author + "</span></h3>");
     html.append("<div class='listbuttons'><button class='showContents'>Gimme the Deets</button></div>");
     html.append("<div class='listbuttons'><button class='showGiphy'>Giphy surprise!</button></div>");
     html.append("<div class='listbuttons'><button class='editList'>Edit my bucket</button></div>");
@@ -205,7 +204,7 @@ ListView.prototype = {
 
   listEditTemplate: function(list) {
     var html = $("<div>");
-    html.append("<input name='author' value='" + list.author + "'>");
+    html.append("<input name='author' value='" + list.author + " '>");
     html.append("<input name='name' value='" + list.name + "'>");
     html.append("<button class='updateList'>Update List</button>");
     html.append("<button class='deleteList'>Delete List</button>");
