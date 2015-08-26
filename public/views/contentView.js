@@ -35,10 +35,6 @@ ContentView.prototype = {
   }
 
   var initMap =  function() {
-    var map = new google.maps.Map(document.getElementById('map'), {
-      zoom: 12,
-      center: {lat: 38.9048099, lng: -77.0337394}
-    });
       var customMapType = new google.maps.StyledMapType([
           {
             stylers: [
