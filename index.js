@@ -22,7 +22,6 @@ app.use("/", listsController);
 app.use("/", contentsController);
 
 
-
 app.listen(3000, function(){
     console.log("app listening on port 3000")
 });

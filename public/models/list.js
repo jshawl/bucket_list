@@ -22,7 +22,6 @@ List.fetch = function() {
 
 List.create = function(listData) {
   var self = this;
-
   var url = "http://localhost:3000/lists";
   var request = $.ajax({
     url: url,

@@ -4,13 +4,13 @@ var Content = DB.models.Content
 
 
 var lists= [
-  {name: "1st List", author: "Joe Schmo"},
-  {name: "2nd List", author: "Billy Bob"}
+  {name: "Travel List", author: "Joe Schmo"},
+  {name: "Concert List", author: "Billy Bob"}
 ]
 
 var contents = [
-  {location: "America", activity: "Fun Stuff", goal_date: "Every Day", completed: false, listId: 1},
-  {location: "Africa", activity: "Not Death", goal_date: "Every Other Day", completed: true, listId: 2}
+  {location: "Thailand", activity: "Ride an Elephant", goal_date: "May 1st 2016", completed: false, listId: 1},
+  {location: "Chicago", activity: "lollapalooza", goal_date: "August 1st 2015", completed: true, listId: 2}
 ]
 
 List.bulkCreate(lists).then(function(){
