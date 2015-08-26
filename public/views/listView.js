@@ -45,7 +45,7 @@ ListView.prototype = {
 
     self.$el.find(".deleteList").on("click", function(){
       self.list.delete().then(function(){
-        self.$el.fadeOut()
+        location.reload()
       });
     });
   },
