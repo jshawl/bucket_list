@@ -27,7 +27,7 @@ ListView.prototype = {
       self.toggleContents(contentsDiv);
     });
     giphyButton.on("click", function(){
-      self.giphyContents(giphyDiv)
+      self.toggleGiphy(giphyDiv)
     });
 
     editButton.on("click", function() {
@@ -77,7 +77,7 @@ ListView.prototype = {
     contentsDiv.toggle();
     this.toggleButton(contentsDiv);
   },
-  giphyContents: function(giphyDiv){
+  toggleGiphy: function(giphyDiv){
     var self = this;
     // if not in DOM, populate
     if(giphyDiv.children().length === 0){
@@ -107,7 +107,9 @@ ListView.prototype = {
     var self = this;
     var data = {  name:   $('input[name=name]').val(),
                   author: $('input[name=author]').val() };
-    self.list.update(data).then(function() { self.render(); });
+    self.list.update(data)
+    .then(function() { self.render();
+    });
   },
 
   listTemplate: function(list){

@@ -20,8 +20,8 @@ var newListView = function(list){
 newListView.prototype = {
   createList: function() {
     var self = this;
-    var data = {  name:     self.$el.find('input[name=name]').val(),
-                  author:     self.$el.find('input[name=author]').val() };
+    var data = {  name:     self.$el.find('input[name=thing]').val(),
+    author: self.$el.find('input[name=blue]').val() };
     List.create(data).then(function(newList) {
       self.$el.find("input").val();  // clear the inputs
       self.$el.find("form").hide();  // hide the form
