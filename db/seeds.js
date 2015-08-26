@@ -10,7 +10,8 @@ var lists= [
 
 var contents = [
   {location: "Thailand", activity: "Ride an Elephant", goal_date: "May 1st 2016", completed: false, listId: 1},
-  {location: "Chicago", activity: "lollapalooza", goal_date: "August 1st 2015", completed: true, listId: 2}
+  {location: "Chicago", activity: "lollapalooza", goal_date: "August 1st 2015", completed: true, listId: 2},
+  {location: "Boston", activity: "Marathon", goal_date: "August 1st 2015", completed: true, listId: 1}
 ]
 
 List.bulkCreate(lists).then(function(){
