@@ -99,8 +99,33 @@ ListView.prototype = {
       contentsDiv.append(contentView.activity());
       contentsDiv.append(contentView.location());
       contentsDiv.append(contentView.goal_date());
-    });
+});
     $("#editContent").on("click", function() {
+      var contents = $(this).closest(".contents")
+      var form = $("<form>Edit Contents</form>")
+      var submit = $("<button>Edit Content</button>")
+      var activity = $("<input placeholder='activity'>")
+      var location = $("<input placeholder='location'>")
+      var goal_date = $("<input placeholder='goal_date'>")
+      form.append(activity)
+      form.append(location)
+      form.append(goal_date)
+      form.append(submit)
+      contents.append(form)
+      submit.on("click", function(event){
+        event.preventDefault();
+        console.log("cool button bro")
+        var data = new Content({
+          activity: activity.val(),
+          location: location.val(),
+          goal_date: goal_date.val()
+        })
+        var view = new ContentView(data)
+        $(".activity").html(view.activity())
+        $(".location").html(view.location());
+        $(".goal_date").html(view.goal_date());
+        form.remove()
+      }.bind(this))
       console.log("edit content button")
     });
     $("#addContent").on("click", function() {
@@ -118,12 +143,12 @@ ListView.prototype = {
       submit.on("click", function(event){
         event.preventDefault();
         console.log("cool button bro")
-        var c = new Content({
+        var data = new Content({
           activity: activity.val(),
           location: location.val(),
           goal_date: goal_date.val()
         })
-        var view = new ContentView(c)
+        var view = new ContentView(data)
         contentsDiv.append(view.activity());
         contentsDiv.append(view.location());
         contentsDiv.append(view.goal_date());
@@ -134,7 +159,6 @@ ListView.prototype = {
 
       console.log("add content button")
     });
-
   },
   appendGiphy: function(giphy, giphyDiv){
     giphy.forEach(function(giphy){

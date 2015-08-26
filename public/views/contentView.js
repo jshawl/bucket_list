@@ -4,15 +4,15 @@ var ContentView = function(content){
 
 ContentView.prototype = {
   activity: function(){
-    var activity = $("<li>" + this.content.activity + "</li>")
+    var activity = $("<li class='activity'>" + this.content.activity + "</li>")
     return(activity)
   },
   location: function(){
-    var location = $("<li>" + this.content.location + "</li>")
+    var location = $("<li class='location'>" + this.content.location + "</li>")
     return(location)
   },
   goal_date: function(){
-    var goal_date = $("<li>" + this.content.goal_date + "</li>"
+    var goal_date = $("<li class='goal_date'>" + this.content.goal_date + "</li>"
     )
     return(goal_date);
   },
@@ -31,13 +31,6 @@ ContentView.prototype = {
         }).always(function(){
           console.log("this always happens regardless of successful ajax request or not")
         })
-      },
-      newView: function(){
-        var form = $("<form>This is working</form>")
-        console.log(this)
-        // form activity, location, goal_date
-        // event listener
-        // append form to div.contents
       }
   }
 
