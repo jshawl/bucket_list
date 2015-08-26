@@ -11,9 +11,15 @@ img{
 #map {
   width: 600px;
   height: 400px;
-  margin: 20px;
+  margin: 20px 300px;
   border-width: 2px;
   border-color: #004358;
+  align: center;
+}
+
+#address, #submit {
+  align: center;
+  margin: 20px 300px;
 }
 
 h1 {
