@@ -91,7 +91,7 @@ ListView.prototype = {
   },
 
   appendContents: function(contents, contentsDiv){
-    var self = this;
+    this.contents = contents
     contentsDiv.append("<button id='editContent'>Edit Content</button>");
     contentsDiv.append("<button id='addContent'>Add Content</button>");
     contents.forEach(function(content){
@@ -115,12 +115,25 @@ ListView.prototype = {
       submit.on("click", function(event){
         event.preventDefault();
         console.log("cool button bro")
-        var data = new Content({
+        var c = new Content({
           activity: activity.val(),
           location: location.val(),
           goal_date: goal_date.val()
         })
-        var view = new ContentView(data)
+
+        console.log(c)
+        console.dir(this)
+        // self.contents.update(c)
+        // updateList: function() {
+        //   var self = this;
+        //   var data = {  author: $('input[name=author]').val(),
+        //                 name:   $('input[name=name]').val()
+        //                };
+        //   self.list.update(data)
+        //   .then(function() { self.render();
+        //   });
+        // }
+        var view = new ContentView(c)
         $(".activity").html(view.activity())
         $(".location").html(view.location());
         $(".goal_date").html(view.goal_date());
@@ -143,12 +156,13 @@ ListView.prototype = {
       submit.on("click", function(event){
         event.preventDefault();
         console.log("cool button bro")
-        var data = new Content({
+        var c = new Content({
           activity: activity.val(),
           location: location.val(),
           goal_date: goal_date.val()
         })
-        var view = new ContentView(data)
+        Content.create(c)
+        var view = new ContentView(c)
         contentsDiv.append(view.activity());
         contentsDiv.append(view.location());
         contentsDiv.append(view.goal_date());
