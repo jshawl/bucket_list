@@ -7,7 +7,7 @@ var Content = function(info){
   this.id = info.id
 }
 Content.fetch = function() {
-  var url = "http://localhost:3000/contents";
+  var url = "/contents";
   var request = $.getJSON(url)
   .then(function(response){
 
@@ -25,7 +25,7 @@ Content.fetch = function() {
 
 Content.create = function(contentData) {
 
-  var url = "http://localhost:3000/contents";
+  var url = "/contents";
   var request = $.ajax({
     url: url,
     method: "post",
@@ -39,7 +39,7 @@ Content.create = function(contentData) {
 
   Content.update = function(contentData) {
     var self = this;
-    var url = "http://localhost:3000/contents/" + this.id;
+    var url = "/contents/14";
     var request = $.ajax({
       url: url,
       method: "put",
@@ -50,7 +50,7 @@ Content.create = function(contentData) {
   }
 
   Content.delete = function(){
-    var url = "http://localhost:3000/lists/" + this.id;
+    var url = "/contents/13";
     var request = $.ajax( {url: url, method: "delete"});
     return request;
   }

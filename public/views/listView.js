@@ -94,6 +94,7 @@ ListView.prototype = {
     this.contents = contents
     contentsDiv.append("<button id='editContent'>Edit Content</button>");
     contentsDiv.append("<button id='addContent'>Add Content</button>");
+    contentsDiv.append("<button id='deleteContent'>Delete Content</button>");
     contents.forEach(function(content){
       var contentView = new ContentView(content);
       contentsDiv.append(contentView.activity());
@@ -124,19 +125,8 @@ ListView.prototype = {
           location: location.val(),
           goal_date: goal_date.val()
         })
-
         console.log(c)
-        console.dir(this)
-        // self.contents.update(c)
-        // updateList: function() {
-        //   var self = this;
-        //   var data = {  author: $('input[name=author]').val(),
-        //                 name:   $('input[name=name]').val()
-        //                };
-        //   self.list.update(data)
-        //   .then(function() { self.render();
-        //   });
-        // }
+        Content.update(c)
         var view = new ContentView(c)
         $(".activity").html(view.activity())
         $(".location").html(view.location());
@@ -145,6 +135,11 @@ ListView.prototype = {
       }.bind(this))
       console.log("edit content button")
     });
+    $("#deleteContent").on("click", function(event){
+      event.preventDefault();
+      console.log("Delete Button Clicked")
+      Content.delete()
+    })
     $("#addContent").on("click", function() {
       var contents = $(this).closest(".contents")
       var form = $("<form>Add Contents</form>")
