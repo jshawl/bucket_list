@@ -7,7 +7,7 @@ var Content = function(info){
   this.id = info.id
 }
 Content.fetch = function() {
-  var url = "http://localhost:3000/contents";
+  var url = "/contents";
   var request = $.getJSON(url)
   .then(function(response){
 
@@ -25,7 +25,7 @@ Content.fetch = function() {
 };
 
 Content.create = function(contentData) {
-  var url = "http://localhost:3000/lists/"+this.id+"/contents";
+  var url = "/lists/"+this.id+"/contents";
   var request = $.ajax({
     url: url,
     method: "post",
