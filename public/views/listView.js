@@ -97,12 +97,15 @@ ListView.prototype = {
     contentsDiv.append("<button id='deleteContent'>Delete Content</button>");
     contents.forEach(function(content){
       var contentView = new ContentView(content);
-      contentsDiv.append(contentView.activity());
-      contentsDiv.append(contentView.location());
-      contentsDiv.append(contentView.goal_date());
-      contentsDiv.append(contentView.completed());
+      var group = contentView.activity();
+      group.append(contentView.location());
+      group.append(contentView.goal_date());
+      group.append(contentView.completed());
+      contentsDiv.append(group)
 });
-    $("#editContent").on("click", function() {
+    $("ul[data-id]").on("click", function(event) {
+      var ul = $(event.target).closest("ul")
+      console.log(ul.attr("data-id"))
       var contents = $(this).closest(".contents")
       var form = $("<form>Edit Contents</form>")
       var submit = $("<button>Edit Content</button>")
@@ -133,7 +136,6 @@ ListView.prototype = {
         $(".goal_date").html(view.goal_date());
         form.remove()
       }.bind(this))
-      console.log("edit content button")
     });
     $("#deleteContent").on("click", function(event){
       event.preventDefault();
@@ -172,7 +174,6 @@ ListView.prototype = {
         contentsDiv.append(view.location());
         contentsDiv.append(view.goal_date());
         contentsDiv.append(view.completed());
-        contentsDiv.append(view.listId());
         form.remove()
       }.bind(this))
       // create new form
