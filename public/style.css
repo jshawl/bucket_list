@@ -3,12 +3,22 @@ body{
   background: #9ACAB5;
 }
 
+
 img{
   height: 200px;
   width: 200px;
 }
 
-#map {
+#map_wrapper {
+    height: 400px;
+}
+
+#map_canvas {
+    width: 80%;
+    height: 80%;
+}
+
+/*#map {
   width: 600px;
   height: 400px;
   margin: 20px 300px;
@@ -20,7 +30,7 @@ img{
 #address, #submit {
   align: center;
   display: inline;
-}
+}*/
 
 h1 {
   font-family: sans-serif;
@@ -130,6 +140,9 @@ div.contents {
   border: 1em solid #9ACAB5;
 }
 
-li.goal_date {
+li.completed {
   border-bottom: 1em solid #9ACAB5;
+}
+li{
+  list-style-type: none;
 }

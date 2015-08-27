@@ -6,7 +6,7 @@ var List = function(info){
 }
 
 List.fetch = function() {
-  var request = $.getJSON("http://localhost:3000/lists")
+  var request = $.getJSON("/lists")
   .then(function(response) {
     var lists = []
     for(var i = 0; i < response.length; i++) {
@@ -22,7 +22,7 @@ List.fetch = function() {
 
 List.create = function(listData) {
   var self = this;
-  var url = "http://localhost:3000/lists";
+  var url = "/lists";
   var request = $.ajax({
     url: url,
     method: "post",
@@ -36,7 +36,7 @@ List.create = function(listData) {
 
 List.prototype = {
   fetchContents: function(){
-    var url = "http://localhost:3000/lists/" + this.id + "/contents";
+    var url = "/lists/" + this.id + "/contents";
     var request = $.getJSON(url)
     .then(function(response){
       var contents = [];
@@ -52,7 +52,7 @@ List.prototype = {
   },
   update: function(listData) {
     var self = this;
-    var url = "http://localhost:3000/lists/" + this.id;
+    var url = "/lists/" + this.id;
     var request = $.ajax({
       url: url,
       method: "put",
@@ -64,7 +64,7 @@ List.prototype = {
     return request;
   },
   delete: function(){
-    var url = "http://localhost:3000/lists/" + this.id;
+    var url = "/lists/" + this.id;
     var request = $.ajax( {url: url, method: "delete"});
     return request;
   },

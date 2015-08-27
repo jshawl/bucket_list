@@ -15,6 +15,11 @@ router.get("/contents", function(req, res){
   });
 });
 
+router.post("/contents", function(req, res){
+  Content.create(req.body).then(function(content){
+    res.json(content);
+  });
+});
 //Content show page
 router.get("/contents/:id", function(req, res){
   Content.findById(req.params.id).then(function(content){
