@@ -1,6 +1,7 @@
 Project Description:
 
-Bucket List is an app for tracking places you want to visit and things that you want to do during your stay on this earth.
+Bucket List is a communal bucket of lists where
+
 
 Approach:
 
