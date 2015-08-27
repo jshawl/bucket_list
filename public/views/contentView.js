@@ -44,12 +44,12 @@ ContentView.prototype = {
       }
   }
 
-  // jQuery(function($) {
-  //     // Asynchronously Load the map API
-  //     var script = document.createElement('script');
-  //     script.src = "http://maps.googleapis.com/maps/api/js?sensor=false&callback=initialize";
-  //     document.body.appendChild(script);
-  // });
+  jQuery(function($) {
+      // Asynchronously Load the map API
+      var script = document.createElement('script');
+      script.src = "http://maps.googleapis.com/maps/api/js?sensor=false&callback=initialize";
+      document.body.appendChild(script);
+  });
   var initialize =  function() {
     var map;
     var bounds = new google.maps.LatLngBounds();

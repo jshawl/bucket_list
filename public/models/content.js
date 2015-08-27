@@ -24,7 +24,6 @@ Content.fetch = function() {
 };
 
 Content.create = function(contentData) {
-
   var url = "/contents";
   var request = $.ajax({
     url: url,

@@ -1,7 +1,11 @@
-
 body{
-  background: #9ACAB5;
+  background: #ffffff;
+  font-family: 'Varela', sans-serif;
+  text-align: center;
 }
+
+/*#9ACAB5*/
+
 
 img{
   height: 200px;
@@ -10,11 +14,17 @@ img{
 
 #map_wrapper {
     height: 400px;
+    margin-left: 18%;
 }
 
 #map_canvas {
     width: 80%;
     height: 80%;
+}
+
+div.lists {
+  padding: 0% 5% 5% 5%;
+  margin-left: 23%;
 }
 
 /*#map {
@@ -32,7 +42,6 @@ img{
 }*/
 
 h1 {
-  font-family: sans-serif;
   font-weight: bolder;
   font-size: 56px;
   text-align: center;
@@ -47,20 +56,33 @@ div.newListView {
   padding-top: 20px;
 }
 
-button.addList {
+/*button.addList {
   background-color: rgba(200, 200, 200, 0.4);
   color: black;
   text-decoration: none;
   width: 10em;
   line-height: 20px;
-  font-family:monospace;
   font-size: 24px;
-}
+}*/
 
+input#submit:hover,
 button:hover {
-  background-color: rgba(200, 200, 200, 0.4);
+  background-color: #FFFF19;
   color: black;
   font-weight: bolder;
+  border: 0;
+  box-shadow: 0 0 0;
+  -webkit-box-shadow: 0 0 0
+}
+
+input#submit,
+button {
+  background-color: #9ACAB5;
+  color: #ffffff;
+  border-radius: 0px;
+  padding: 2px;
+  width: 150px;
+  height: 55px;
 }
 
 input {
@@ -82,22 +104,20 @@ input {
 /*LIST*/
 
 .thebucket {
-  font-family: serif;
   text-decoration-style: double;
 }
 
 .lists {
   margin: 0 100px;
-  border: .7em solid white;
+  border: .7em solid #9ACAB5;
   width: 35em;
-  float: left
+  float: left;
 }
 
 .listAuthor {
   text-transform: uppercase;
   text-align: center;
   padding: 20px;
-  font-family: monospace;
   /*border-top: 1em solid white;*/
 }
 
@@ -105,43 +125,32 @@ input {
   /*margin: 0 50px 20px 50px;
   border: .5em solid #B2EBB4;*/
   padding-left: 2em;
-  font-family: cursive;
-
 }
 
 .listbuttons {
   display: inline;
-
 }
 
-button.showContents,
-button.showGiphy,
-button.editList {
-  background-color: #899EAB;
-  color: #fff;
-  border-radius: 25px;
-  padding: 2px;
-  width: 150px;
-  height: 55px;
-  padding: 0 2em;
-  margin: 0 10px;
-}
 
 /*EDIT LIST ITEM*/
 input[name="author"],
 input[name="name"] {
-
-
 }
 
 /*EDIT CONTENTS*/
 div.contents {
-  border: 1em solid #9ACAB5;
+  border: .5em solid #9ACAB5;
+  margin-top: 1em;
+  padding-top: 1em;
 }
 
 li.completed {
-  border-bottom: 1em solid #9ACAB5;
+  border-bottom: 2px dotted #9ACAB5;
+  padding-bottom: 1em;
+  margin-right: 3em;
 }
+
 li{
+  text-align: left;
   list-style-type: none;
 }
