@@ -24,16 +24,18 @@ newListView.prototype = {
     author: self.$el.find('input[name=listAuthor]').val() };
     var contentdata = {  activity:     self.$el.find('input[name=contentActivity]').val(),
     location: self.$el.find('input[name=contentLocation]').val(),
-    goal_date: self.$el.find('input[name=contentGoal]').val()
+    goal_date: self.$el.find('input[name=contentGoal]').val(),
+    completed: self.$el.find('input[name=contentCompleted]').val(),
+    listId: self.$el.find('input[name=listID]').val()
    };
     List.create(listdata)
     console.log(contentdata)
-    List.contents.create(contentdata)
-    // .then(function(newList) {
-    //   self.$el.find("input").val("");  // clear the inputs
-    //   self.$el.find("form").hide();  // hide the form
-    //
-    //   var view = new ListView(newList); // create the new list view (renders)
-    // });
+    Content.create(contentdata)
+    .then(function(newList) {
+      self.$el.find("input").val();  // clear the inputs
+      self.$el.find("form").hide();  // hide the form
+      var view = new ListView(newList); // create the new list view (renders)
+      location.reload()
+    });
   }
 };
