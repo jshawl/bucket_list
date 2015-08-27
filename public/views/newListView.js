@@ -28,12 +28,12 @@ newListView.prototype = {
    };
     List.create(listdata)
     console.log(contentdata)
-    List.contents.create(contentdata)
-    // .then(function(newList) {
-    //   self.$el.find("input").val("");  // clear the inputs
-    //   self.$el.find("form").hide();  // hide the form
-    //
-    //   var view = new ListView(newList); // create the new list view (renders)
-    // });
+    Content.create(contentdata)
+    .then(function(newList) {
+      self.$el.find("input").val();  // clear the inputs
+      self.$el.find("form").hide();  // hide the form
+
+      var view = new ListView(newList); // create the new list view (renders)
+    });
   }
 };

@@ -34,7 +34,9 @@ ContentView.prototype = {
       }
   }
 
+
   var initMap =  function() {
+
     var map = new google.maps.Map(document.getElementById('map'), {
       zoom: 12,
       center: {lat: 38.9048099, lng: -77.0337394}
@@ -87,9 +89,12 @@ ContentView.prototype = {
 
 
   var geocodeAddress = function (geocoder, resultsMap) {
+    var contents = Content.fetch();
+    contents.then(function(contents){
+    var contentsPlace = contents[1].location
 
-    var address = document.getElementById('address').value;
-
+    var address = document.getElementById('submit');
+    var address = contentsPlace
     geocoder.geocode({'address': address},
     function(results, status) {
       if (status === google.maps.GeocoderStatus.OK) {
@@ -102,6 +107,7 @@ ContentView.prototype = {
         alert('Geocode was not successful for the following reason: ' + status);
       }
     });
+    })
   }
 }
 
