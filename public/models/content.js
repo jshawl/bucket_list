@@ -24,8 +24,7 @@ Content.fetch = function() {
 };
 
 Content.create = function(contentData) {
-this.listId = contentData.listId;
-console.log(this.listId)
+
   var url = "http://localhost:3000/contents";
   var request = $.ajax({
     url: url,

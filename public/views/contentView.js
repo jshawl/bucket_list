@@ -91,7 +91,7 @@ ContentView.prototype = {
   var geocodeAddress = function (geocoder, resultsMap) {
     var contents = Content.fetch();
     contents.then(function(contents){
-    var contentsPlace = contents[1].location
+    var contentsPlace = contents[0].location
 
     var address = document.getElementById('submit');
     var address = contentsPlace
