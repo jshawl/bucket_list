@@ -25,6 +25,7 @@ newListView.prototype = {
     var contentdata = {  activity:     self.$el.find('input[name=contentActivity]').val(),
     location: self.$el.find('input[name=contentLocation]').val(),
     goal_date: self.$el.find('input[name=contentGoal]').val(),
+    completed: self.$el.find('input[name=contentCompleted]').val(),
     listId: self.$el.find('input[name=listID]').val()
    };
     List.create(listdata)

@@ -4,17 +4,27 @@ var ContentView = function(content){
 
 ContentView.prototype = {
   activity: function(){
-    var activity = $("<li class='activity'>" + this.content.activity + "</li>")
+    var activity = $("<li class='activity'>Activity: " + this.content.activity + "</li>")
     return(activity)
   },
   location: function(){
-    var location = $("<li class='location'>" + this.content.location + "</li>")
+    var location = $("<li class='location'>Where: " + this.content.location + "</li>")
     return(location)
   },
   goal_date: function(){
-    var goal_date = $("<li class='goal_date'>" + this.content.goal_date + "</li>"
+    var goal_date = $("<li class='goal_date'>Date for Completion: " + this.content.goal_date + "</li>"
     )
     return(goal_date);
+  },
+  completed: function(){
+    var completed = $("<li class='completed'>Completed Yet? " + this.content.completed + "</li>"
+    )
+    return(completed);
+  },
+  listId: function(){
+    var listId = $("<li class='listId'>" + this.content.listId + "</li>"
+    )
+    return(listId);
   },
   giphy: function(){
     var search = this.content.activity; // search query

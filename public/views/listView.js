@@ -99,6 +99,7 @@ ListView.prototype = {
       contentsDiv.append(contentView.activity());
       contentsDiv.append(contentView.location());
       contentsDiv.append(contentView.goal_date());
+      contentsDiv.append(contentView.completed());
 });
     $("#editContent").on("click", function() {
       var contents = $(this).closest(".contents")
@@ -107,14 +108,17 @@ ListView.prototype = {
       var activity = $("<input placeholder='activity'>")
       var location = $("<input placeholder='location'>")
       var goal_date = $("<input placeholder='goal date'>")
+      var completed = $("<input placeholder='completed true or false'>")
+      var listId = $("<input placeholder='list ID'>")
       form.append(activity)
       form.append(location)
       form.append(goal_date)
+      form.append(completed)
+      form.append(listId)
       form.append(submit)
       contents.append(form)
       submit.on("click", function(event){
         event.preventDefault();
-        console.log("cool button bro")
         var c = new Content({
           activity: activity.val(),
           location: location.val(),
@@ -144,13 +148,17 @@ ListView.prototype = {
     $("#addContent").on("click", function() {
       var contents = $(this).closest(".contents")
       var form = $("<form>Add Contents</form>")
-      var submit = $("<button>Create Content</button>")
+      var submit = $("<button>Add Content</button>")
       var activity = $("<input placeholder='activity'>")
       var location = $("<input placeholder='location'>")
       var goal_date = $("<input placeholder='goal date'>")
+      var completed = $("<input placeholder='completed true or false'>")
+      var listId = $("<input placeholder='list ID'>")
       form.append(activity)
       form.append(location)
       form.append(goal_date)
+      form.append(completed)
+      form.append(listId)
       form.append(submit)
       contents.append(form)
       submit.on("click", function(event){
@@ -159,13 +167,17 @@ ListView.prototype = {
         var c = new Content({
           activity: activity.val(),
           location: location.val(),
-          goal_date: goal_date.val()
+          goal_date: goal_date.val(),
+          completed: completed.val(),
+          listId: listId.val()
         })
         Content.create(c)
         var view = new ContentView(c)
         contentsDiv.append(view.activity());
         contentsDiv.append(view.location());
         contentsDiv.append(view.goal_date());
+        contentsDiv.append(view.completed());
+        contentsDiv.append(view.listId());
         form.remove()
       }.bind(this))
       // create new form
