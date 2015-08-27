@@ -91,8 +91,7 @@ ListView.prototype = {
   },
 
   appendContents: function(contents, contentsDiv){
-    this.contents = contents
-    contentsDiv.append("<button id='editContent'>Edit Content</button>");
+    // contentsDiv.append("<button id='editContent'>Edit Content</button>");
     contentsDiv.append("<button id='addContent'>Add Content</button>");
     contentsDiv.append("<button id='deleteContent'>Delete Content</button>");
     contents.forEach(function(content){
@@ -102,42 +101,64 @@ ListView.prototype = {
       group.append(contentView.goal_date());
       group.append(contentView.completed());
       contentsDiv.append(group)
+      var id = (contentView.content.id)
+      console.log(id)
 });
+$(".location").on("click", function(event){
+  var ul = $(event.target).closest("ul")
+  var id = (ul.attr("data-id"))
+  console.log(id)
+})
     $("ul[data-id]").on("click", function(event) {
       var ul = $(event.target).closest("ul")
-      console.log(ul.attr("data-id"))
+      var li = $(event.target).closest("li")
+      var id = (ul.attr("data-id"))
+      var contentVal = li.context.innerHTML
+      console.log(ul)
+      console.log(id)
+      console.log(li)
       var contents = $(this).closest(".contents")
-      var form = $("<form>Edit Contents</form>")
-      var submit = $("<button>Edit Content</button>")
-      var activity = $("<input placeholder='activity'>")
-      var location = $("<input placeholder='location'>")
-      var goal_date = $("<input placeholder='goal date'>")
-      var completed = $("<input placeholder='completed true or false'>")
-      var listId = $("<input placeholder='list ID'>")
-      form.append(activity)
-      form.append(location)
-      form.append(goal_date)
-      form.append(completed)
-      form.append(listId)
+      // var form = $("<form></form>")
+      var submit = $("<button>Update Content</button>")
+      // var activity = $("<input placeholder='activity'>")
+      var form = $("<form><input name='xyz' value='"+contentVal+"'></form>")
+      // var goal_date = $("<input placeholder='goal date'>")
+      // var completed = $("<input placeholder='completed true or false'>")
+      // var listId = $("<input placeholder='list ID'>")
+      // form.append(values)
+      // form.append(location)
+      // form.append(goal_date)
+      // form.append(completed)
+      // form.append(listId)
       form.append(submit)
       contents.append(form)
       submit.on("click", function(event){
         event.preventDefault();
-        var c = new Content({
-          activity: activity.val(),
-          location: location.val(),
-          goal_date: goal_date.val()
-        })
-        console.log(c)
-        Content.update(c)
-        var view = new ContentView(c)
-        $(".activity").html(view.activity())
-        $(".location").html(view.location());
-        $(".goal_date").html(view.goal_date());
+        console.log("sub button click")
+      //   var c = new Content({
+      //     activity: activity.val(),
+      //     location: location.val(),
+      //     goal_date: goal_date.val()
+      //   })
+      //   console.log(c)
+        // Content.update(newVal)
+      //   var view = new ContentView(c)
+
+        var newVal = ($("input[name=xyz]").val())
+        var location = $(".location")
+        location.html(newVal);
+      //   $(".goal_date").html(view.goal_date());
         form.remove()
       }.bind(this))
+
     });
     $("#deleteContent").on("click", function(event){
+      var ul = $(event.target).find("ul")
+      var li = $(event.target).find("li")
+      var id = (ul.attr("data-id"))
+      console.log(ul)
+      console.log(id)
+      console.log(li)
       event.preventDefault();
       console.log("Delete Button Clicked")
       Content.delete()

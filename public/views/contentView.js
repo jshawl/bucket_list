@@ -4,20 +4,20 @@ var ContentView = function(content){
 
 ContentView.prototype = {
   activity: function(){
-    var activity = $("<ul data-id='"+this.content.id+"'><li class='activity'>Activity: " + this.content.activity + "</li></ul>")
+    var activity = $("<ul data-id='"+this.content.id+"'><li class='activity'>" + this.content.activity + "</li></ul>")
     return(activity)
   },
   location: function(){
-    var location = $("<li class='location'>Where: " + this.content.location + "</li>")
+    var location = $("<li class='location'>" + this.content.location + "</li>")
     return(location)
   },
   goal_date: function(){
-    var goal_date = $("<li class='goal_date'>Date for Completion: " + this.content.goal_date + "</li>"
+    var goal_date = $("<li class='goal_date'>" + this.content.goal_date + "</li>"
     )
     return(goal_date);
   },
   completed: function(){
-    var completed = $("<li class='completed'>Completed Yet? " + this.content.completed + "</li>"
+    var completed = $("<li class='completed'>" + this.content.completed + "</li>"
     )
     return(completed);
   },
