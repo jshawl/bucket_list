@@ -10,8 +10,8 @@
     <script src="/public/views/newListView.js"></script>
     <script src="/public/views/contentView.js"></script>
     <script src="/public/script.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?signed_in=true&callback=initMap"
-        async defer></script>
+    <!-- <script src="https://maps.googleapis.com/maps/api/js?signed_in=true&callback=initMap"
+        async defer></script> -->
   </head>
   <body>
     <header><h1>Bucket List</h1></header>
@@ -25,18 +25,19 @@
         <input name='contentActivity' placeholder = "content activity">
         <input name='contentLocation' placeholder = "content location">
         <input name='contentGoal' placeholder = "content goal_date">
+        <input name='contentCompleted' placeholder = "completed true or false">
+        <input name='listID' placeholder = "list ID">
         <button class='createList'>Create List</button>
       </form>
     </p>
-  </div>
+    </div>
 
     <div id="map"></div>
       <div>
-        <input id="address" type="textbox" placeholder="Enter a City">
-        <input id="submit" type="button" value="Take me there!" >
+        <!-- <input id="address" type="textbox" placeholder="Enter a City"> -->
+        <input id="submit" type="button" value="Take me There" >
       </div>
-
-    {{{ body }}}
-
+      <h1 class="thebucket">THE BUCKET ITSELF</h1>
+          {{{ body }}}
   </body>
 </html>

@@ -15,7 +15,6 @@ Content.fetch = function() {
     for(var i = 0; i < response.length; i++){
       contents.push(new Content(response[i]));
     }
-    console.log(contents[1].location)
     return contents;
    })
   .fail(function(repsonse){
@@ -25,7 +24,7 @@ Content.fetch = function() {
 };
 
 Content.create = function(contentData) {
-  var url = "/lists/"+this.id+"/contents";
+  var url = "/contents";
   var request = $.ajax({
     url: url,
     method: "post",
@@ -36,3 +35,21 @@ Content.create = function(contentData) {
   });
   return request;
 };
+
+  Content.update = function(contentData) {
+    var self = this;
+    var url = "/contents/14";
+    var request = $.ajax({
+      url: url,
+      method: "put",
+      data: JSON.stringify(contentData),
+      contentType : 'application/json'
+    })
+    return request;
+  }
+
+  Content.delete = function(){
+    var url = "/contents/13";
+    var request = $.ajax( {url: url, method: "delete"});
+    return request;
+  }
