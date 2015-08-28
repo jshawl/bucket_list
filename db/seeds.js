@@ -7,8 +7,7 @@ var lists= [
   {name: "Travel List", author: "Joe Schmo"},
   {name: "Concert List", author: "Billy Bob"},
   {name: "Food List", author: "John Doe"},
-  {name: "Activity List", author: "Suzie Q"},
-  {name: "Roadtrip List", author: "Samantha"}
+  {name: "Activity List", author: "Suzie Q"}
 ]
 
 var contents = [
