@@ -91,10 +91,9 @@ ListView.prototype = {
   },
 
   appendContents: function(contents, contentsDiv){
-    this.contents = contents
-    contentsDiv.append("<button id='editContent'>Edit Content</button>");
+    // contentsDiv.append("<button id='editContent'>Edit Content</button>");
     contentsDiv.append("<button id='addContent'>Add Content</button>");
-    contentsDiv.append("<button id='deleteContent'>Delete Content</button>");
+    // contentsDiv.append("<button id='deleteContent'>Delete Content</button>");
     contents.forEach(function(content){
       var contentView = new ContentView(content);
       var group = contentView.activity();
@@ -102,46 +101,58 @@ ListView.prototype = {
       group.append(contentView.goal_date());
       group.append(contentView.completed());
       contentsDiv.append(group)
-});
-    $("ul[data-id]").on("click", function(event) {
-      var ul = $(event.target).closest("ul")
-      console.log(ul.attr("data-id"))
-      var contents = $(this).closest(".contents")
-      var form = $("<form class='scoop'><p>Edit</p></form>")
-      var submit = $("<button>Edit</button>")
-      var activity = $("<input placeholder='activity'>")
-      var location = $("<input placeholder='location'>")
-      var goal_date = $("<input placeholder='goal date'>")
-      var completed = $("<input placeholder='completed true or false'>")
-      var listId = $("<input placeholder='list ID'>")
-      form.append(activity)
-      form.append(location)
-      form.append(goal_date)
-      form.append(completed)
-      form.append(listId)
-      form.append(submit)
-      contents.append(form)
-      submit.on("click", function(event){
-        event.preventDefault();
-        var c = new Content({
-          activity: activity.val(),
-          location: location.val(),
-          goal_date: goal_date.val()
-        })
-        console.log(c)
-        Content.update(c)
-        var view = new ContentView(c)
-        $(".activity").html(view.activity())
-        $(".location").html(view.location());
-        $(".goal_date").html(view.goal_date());
-        form.remove()
-      }.bind(this))
+      var id = (contentView.content.id)
+      console.log(id)
+      contentsDiv.append("<button id='deleteContent'>Delete Content</button>");
+      $("#deleteContent").on("click", function(){
+        var id = (contentView.content.id)
+        console.log(id)
+
     });
-    $("#deleteContent").on("click", function(event){
-      event.preventDefault();
-      console.log("Delete Button Clicked")
-      Content.delete()
-    })
+})
+$("ul[data-id]").on("click", function(event) {
+  var ul = $(event.target).closest("ul")
+  var li = $(event.target).closest("li")
+  var id = (ul.attr("data-id"))
+  var contentVal = li.context.innerHTML
+  console.log(ul)
+  console.log(id)
+  console.log(li)
+  var contents = $(this).closest(".contents")
+  // var form = $("<form></form>")
+  var submit = $("<button>Update Content</button>")
+  // var activity = $("<input placeholder='activity'>")
+  var form = $("<form><input name='xyz' value='"+contentVal+"'></form>")
+  // var goal_date = $("<input placeholder='goal date'>")
+  // var completed = $("<input placeholder='completed true or false'>")
+  // var listId = $("<input placeholder='list ID'>")
+  // form.append(values)
+  // form.append(location)
+  // form.append(goal_date)
+  // form.append(completed)
+  // form.append(listId)
+  form.append(submit)
+  contents.append(form)
+  submit.on("click", function(event){
+    event.preventDefault();
+    console.log("sub button click")
+  //   var c = new Content({
+  //     activity: activity.val(),
+  //     location: location.val(),
+  //     goal_date: goal_date.val()
+  //   })
+  //   console.log(c)
+    // Content.update(newVal)
+  //   var view = new ContentView(c)
+
+    var newVal = ($("input[name=xyz]").val())
+    var location = $(".location")
+    location.html(newVal);
+  //   $(".goal_date").html(view.goal_date());
+    form.remove()
+  }.bind(this))
+
+});
     $("#addContent").on("click", function() {
       var contents = $(this).closest(".contents")
       var form = $("<form class='scoop'><p>What's the scoop?</p></form>")

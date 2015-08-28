@@ -37,6 +37,7 @@ Content.create = function(contentData) {
 };
 
   Content.update = function(contentData) {
+    console.log(this.Content)
     var url = "/contents/15";
     var request = $.ajax({
       url: url,
@@ -48,7 +49,7 @@ Content.create = function(contentData) {
   }
 
   Content.delete = function(){
-    var url = "/contents/15";
+    var url = "/contents/" ;
     var request = $.ajax( {url: url, method: "delete"});
     return request;
   }
