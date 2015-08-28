@@ -43,6 +43,7 @@ ContentView.prototype = {
         })
       }
   }
+  //map functionality google maps API
 var initialize =  function() {
 var map;
 var elevator;
@@ -70,10 +71,40 @@ for (var x = 0; x < contents.length; x++) {
     });
 }
 })
+    var geocoder = new google.maps.Geocoder();
+
+    document.getElementById('submit').addEventListener('click', function() {
+      geocodeAddress(geocoder, map);
+    });
+
+  var geocodeAddress = function (geocoder, resultsMap) {
+    var contents = Content.fetch();
+    contents.then(function(contents){
+      for (var j = 0; j < contents.length; j++){
+        var contentsPlace = (contents[j].location);
+        console.log(contents[j].location);
+      }
+    var address = document.getElementById('submit');
+    var address = contentsPlace
+    geocoder.geocode({'address': address},
+    function(results, status) {
+      if (status === google.maps.GeocoderStatus.OK) {
+        resultsMap.setCenter(results[0].geometry.location);
+        console.log(results)
+        var marker = new google.maps.Marker({
+          map: resultsMap,
+          position: results[0].geometry.location
+        });
+      } else {
+        alert('Geocode was not successful for the following reason: ' + status);
+      }
+    });
+    })
+  }
 }
 
-//
-//     // Display multiple markers on a map
+
+//     // How to Display multiple markers on a map
 //     var infoWindow = new google.maps.InfoWindow(), marker, i;
 //
 //     // Loop through our array of markers & place each one on the map
@@ -103,6 +134,8 @@ for (var x = 0; x < contents.length; x++) {
 //         this.setZoom(14);
 //         google.maps.event.removeListener(boundsListener);
 //     });
+
+
 //     // var map = new google.maps.Map(document.getElementById('map'), {
 //     //   zoom: 12,
 //     //   center: {lat: 38.9048099, lng: -77.0337394}
@@ -147,54 +180,5 @@ for (var x = 0; x < contents.length; x++) {
 //       //   map.mapTypes.set(customMapTypeId, customMapType);
 //       //   map.setMapTypeId(customMapTypeId);
 //
-//     var geocoder = new google.maps.Geocoder();
-//
-//     document.getElementById('submit').addEventListener('click', function() {
-//       geocodeAddress(geocoder, map);
-//     });
-//
-//
-//   var geocodeAddress = function (geocoder, resultsMap) {
-//     var contents = Content.fetch();
-//     contents.then(function(contents){
-//       for (var j = 0; j < contents.length; j++){
-//         var contentsPlace = (contents[j].location);
-//         console.log(contents[j].location);
-//       }
-//     var address = document.getElementById('submit');
-//     var address = contentsPlace
-//     geocoder.geocode({'address': address},
-//     function(results, status) {
-//       if (status === google.maps.GeocoderStatus.OK) {
-//         resultsMap.setCenter(results[0].geometry.location);
-//         console.log(results)
-//         var marker = new google.maps.Marker({
-//           map: resultsMap,
-//           position: results[0].geometry.location
-//         });
-//       } else {
-//         alert('Geocode was not successful for the following reason: ' + status);
-//       }
-//     });
-//     })
-//   }
-// }
 
-
-// google.maps.event.addListener(map, 'click', function(event) {
-//    placeMarker(event.latLng);
-// });
-
-// function placeMarker(location) {
-//     var marker = new google.maps.Marker({
-//         position: location,
-//         map: map
-//     });
-// }
-
-// var marker = new google.maps.Marker({
-//   position: myLatLng,
-//   map: map,
-//   title: 'Hello World!'
-// });
 // }
