@@ -56,7 +56,7 @@ map = new google.maps.Map($('#map_canvas')[0], myOptions);
 
 var myTitle = document.createElement('h1');
 myTitle.style.color = 'white';
-myTitle.innerHTML = 'Bucket List';
+myTitle.innerHTML = 'Bucket Tracker';
 var myTextDiv = document.createElement('div');
 myTextDiv.appendChild(myTitle);
 
