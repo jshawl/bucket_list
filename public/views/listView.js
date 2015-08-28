@@ -107,11 +107,9 @@ ListView.prototype = {
       $("#deleteContent").on("click", function(){
         var id = (contentView.content.id)
         console.log(id)
-        event.preventDefault();
-        console.log("Delete Button Clicked")
-        Content.delete()
-      })
-});
+
+    });
+})
 $("ul[data-id]").on("click", function(event) {
   var ul = $(event.target).closest("ul")
   var li = $(event.target).closest("li")
@@ -157,8 +155,8 @@ $("ul[data-id]").on("click", function(event) {
 });
     $("#addContent").on("click", function() {
       var contents = $(this).closest(".contents")
-      var form = $("<form>Add Contents</form>")
-      var submit = $("<button>Add Content</button>")
+      var form = $("<form class='scoop'><p>What's the scoop?</p></form>")
+      var submit = $("<button>Add to bucket</button>")
       var activity = $("<input placeholder='activity'>")
       var location = $("<input placeholder='location'>")
       var goal_date = $("<input placeholder='goal date'>")

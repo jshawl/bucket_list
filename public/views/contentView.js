@@ -1,5 +1,5 @@
 var ContentView = function(content){
-  this.content = content;
+ this.content = content;
 }
 
 ContentView.prototype = {

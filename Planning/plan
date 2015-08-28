@@ -1,0 +1,14 @@
+Wireframe: https://wireframe.cc/tUK3UE
+
+User Stories:
+-View all buckets
+-Add a new list to the bucket
+  -Add content to the new list
+-View a map
+-Update bucket content
+-Delete content
+-Delete bucket
+-View items in a bucket
+-View a surprise giphy
+
+ERD: bucket has many lists; lists belong to buckets   

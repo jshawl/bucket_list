@@ -71,7 +71,7 @@ button {
   height: 55px;
 }
 
-input {
+input:not(#submit) {
     border: 5px solid white;
     -webkit-box-shadow:
       inset 0 0 8px  rgba(0,0,0,0.1),
@@ -128,6 +128,10 @@ div.contents {
   border: .5em solid #9ACAB5;
   margin-top: 1em;
   padding-top: 1em;
+}
+
+.scoop {
+  font-weight: bold;
 }
 
 li.completed {
