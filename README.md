@@ -22,3 +22,10 @@ Major Hurdles:
 -We had issues with deploying to Heroku.
 
 Unsolved Problems:
+-Calling list id for add/create functionality
+-HTTPS conflict on Heroku map
+-Update form does not populate values
+
+Future Features:
+-Allow content items to be edited individually
+-User authentication

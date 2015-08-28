@@ -36,20 +36,19 @@ Content.create = function(contentData) {
   return request;
 };
 
-  Content.update = function(contentData) {
-    console.log(this.Content)
-    var url = "/contents/15";
+  Content.update = function(id, data) {
+    var url = "/contents/" + id;
     var request = $.ajax({
       url: url,
-      method: "put",
-      data: JSON.stringify(contentData),
+      method: "patch",
+      data: JSON.stringify(data),
       contentType : 'application/json'
     })
     return request;
   }
 
-  Content.delete = function(){
-    var url = "/contents/" ;
+  Content.delete = function(id){
+    var url = "/contents/" + id ;
     var request = $.ajax( {url: url, method: "delete"});
     return request;
   }

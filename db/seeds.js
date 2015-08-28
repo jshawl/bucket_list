@@ -8,7 +8,7 @@ var lists= [
   {name: "Concert List", author: "Billy Bob"},
   {name: "Food List", author: "John Doe"},
   {name: "Activity List", author: "Suzie Q"},
-  {name: "Roadtrip List", author: "Samantha"}
+  {name: "West Coast Trip Y'all", author: "Johnny Bananas"}
 ]
 
 var contents = [

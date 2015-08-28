@@ -52,7 +52,7 @@ router.post("/lists/:listId/contents", function(req, res){
 });
 
 //Update
-router.put("/contents/:id", function(req, res){
+router.patch("/contents/:id", function(req, res){
   Content.findById(req.params.id).then(function(content){
     if(!content) return error(res, "not found");
     content.updateAttributes(req.body).then(function(content){
