@@ -103,12 +103,17 @@ ListView.prototype = {
       var id = (contentView.content.id)
       console.log(id)
       group.append("<button class='deleteContent'>Delete Content</button>");
-      $(".deleteContent").on("click", function(){
-        console.log("Delete Button CLICKED", id)
-        Content.delete(id)
-      });
 })
-
+$(".deleteContent").on("click", function(event){
+  event.stopPropagation();
+  var ul = $(event.target).closest("ul")
+  var id = (ul.attr("data-id"))
+  console.log("Delete Button CLICKED", id)
+  Content.delete(id)
+  .then(function(){
+    location.reload()
+  });
+});
 $("ul[data-id]").on("click", function(event) {
   event.stopPropagation()
   var ul = $(event.target).closest("ul")
@@ -121,38 +126,25 @@ $("ul[data-id]").on("click", function(event) {
   var contents = $(this).closest(".contents")
   var form = $("<form></form>")
   var submit = $("<button>Update Content</button>")
-  // var activity = $("<input placeholder='activity'>")
-  // var form = $("<form><input name='xyz' value='"+contentVal+"'></form>")
-  var goal_date = $("<input placeholder='goal date'>")
-  // var completed = $("<input placeholder='completed true or false'>")
-  // var listId = $("<input placeholder='list ID'>")
-  // form.append(values)
-  // form.append(location)
+  var activity = $("<input placeholder='ACTIVITY'>")
+  var location = $("<input placeholder='LOCATION'>")
+  var goal_date = $("<input placeholder='GOAL DATE'>")
+  var completed = $("<input placeholder='TRUE OR FALSE'>")
+  form.append(activity)
+  form.append(location)
   form.append(goal_date)
-  // form.append(completed)
-  // form.append(listId)
+  form.append(completed)
   form.append(submit)
   contents.append(form)
   submit.on("click", function(event){
     event.preventDefault();
     console.log("sub button click")
-  //   var c = new Content({
-  //     activity: activity.val(),
-  //     location: location.val(),
-  //     goal_date: goal_date.val()
-  //   })
-  //   console.log(c)
-    // Content.update(newVal)
-  //   var view = new ContentView(c)
   Content.update(id, {
-    // location: location.val(),
-    goal_date: goal_date.val()
+    activity: activity.val(),
+    location: location.val(),
+    goal_date: goal_date.val(),
+    completed: completed.val()
   })
-
-    // var newVal = ($("input[name=xyz]").val())
-    // var location = $(".location")
-    // location.html(newVal);
-  //   $(".goal_date").html(view.goal_date());
     form.remove()
   }.bind(this))
 
