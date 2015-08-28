@@ -49,7 +49,7 @@ Content.create = function(contentData) {
   }
 
   Content.delete = function(){
-    var url = "/contents/";
+    var url = "/contents/" ;
     var request = $.ajax( {url: url, method: "delete"});
     return request;
   }

@@ -13,7 +13,7 @@ img{
 }
 
 #map_wrapper {
-    height: 400px;
+    height: 500px;
     margin-left: 18%;
 }
 
@@ -26,20 +26,6 @@ div.lists {
   padding: 0% 5% 5% 5%;
   margin-left: 23%;
 }
-
-/*#map {
-  width: 600px;
-  height: 400px;
-  margin: 20px 300px;
-  border-width: 2px;
-  border-color: #004358;
-  align: center;
-}
-
-#address, #submit {
-  align: center;
-  display: inline;
-}*/
 
 h1 {
   font-weight: bolder;
