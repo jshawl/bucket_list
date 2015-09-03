@@ -21,21 +21,21 @@ newListView.prototype = {
   createList: function() {
     var self = this;
     var listdata = {  name:     self.$el.find('input[name=listName]').val(),
-    author: self.$el.find('input[name=listAuthor]').val() };
+    author: self.$el.find('input[name=listAuthor]').val() }; // please indent correctly
     var contentdata = {  activity:     self.$el.find('input[name=contentActivity]').val(),
     location: self.$el.find('input[name=contentLocation]').val(),
     goal_date: self.$el.find('input[name=contentGoal]').val(),
     completed: self.$el.find('input[name=contentCompleted]').val(),
     listId: self.$el.find('input[name=listID]').val()
    };
-    List.create(listdata)
+    List.create(listdata) // does this take time?
     console.log(contentdata)
     Content.create(contentdata)
     .then(function(newList) {
       self.$el.find("input").val();  // clear the inputs
       self.$el.find("form").hide();  // hide the form
       var view = new ListView(newList); // create the new list view (renders)
-      location.reload()
+      location.reload() // or...
     });
   }
 };

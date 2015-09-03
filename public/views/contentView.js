@@ -37,6 +37,7 @@ ContentView.prototype = {
           console.log(response.data.image_url)
           $("header").append("<img src=" + response.data.image_url + ">")
         }).fail(function(){
+	  // and maybe tell the user about it
           console.log("ajax request fails!")
         }).always(function(){
           console.log("this always happens regardless of successful ajax request or not")
@@ -59,10 +60,11 @@ myTitle.style.color = 'white';
 myTitle.innerHTML = 'Bucket Tracker';
 var myTextDiv = document.createElement('div');
 myTextDiv.appendChild(myTitle);
+// what is the above code doing? Try to stay consistent with jQuery vs. vanilla.
 
 map.controls[google.maps.ControlPosition.BOTTOM_CENTER].push(myTextDiv);
 
-    var contents = Content.fetch();
+    var contents = Content.fetch(); // indent code correctly.
     contents.then(function(contents){
 
 for (var x = 0; x < contents.length; x++) {
@@ -83,9 +85,14 @@ for (var x = 0; x < contents.length; x++) {
     document.getElementById('submit').addEventListener('click', function() {
       geocodeAddress(geocoder, map);
     });
+    // im having a bit of trouble following the code here.
+    // consider refactoring into an object or collection of functions
+    // to remove procedural code and reduce time for testing
 
   var geocodeAddress = function (geocoder, resultsMap) {
     var contents = Content.fetch();
+    // can you geocode the address above when you create the marker?
+    // view-source:http://googlemaps.github.io/js-v2-samples/geocoder/singlegeocode.html
     contents.then(function(contents){
       for (var j = 0; j < contents.length; j++){
         var contentsPlace = (contents[j].location);
@@ -113,6 +120,7 @@ for (var x = 0; x < contents.length; x++) {
 
 //     // How to Display multiple markers on a map
 //     var infoWindow = new google.maps.InfoWindow(), marker, i;
+//     please remove commented out code
 //
 //     // Loop through our array of markers & place each one on the map
 //     for( i = 0; i < markers.length; i++ ) {
@@ -186,6 +194,7 @@ for (var x = 0; x < contents.length; x++) {
 //       //
 //       //   map.mapTypes.set(customMapTypeId, customMapType);
 //       //   map.setMapTypeId(customMapTypeId);
+//       i recommend moving the above to a feature branch, looks like you were close!
 //
 
 // }

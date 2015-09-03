@@ -11,17 +11,17 @@
     <script src="/public/views/contentView.js"></script>
     <script src="/public/script.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?signed_in=true&callback=initialize"
-        async defer></script>
+        async defer whatdoesdeferdo?></script>
   </head>
   <body>
     <header><h1>Bucket List</h1></header>
 
     <div class="newListView">
       <button class="addList">Add to the bucket!</button>
-      <p>
+      <p> <!-- consider using .newList and css instead of p tag here -->
       <form class="newList">
         <input name='listName' placeholder="list name">
-        <input name='listAuthor' placeholder = "list author">
+        <input name='listAuthor' placeholder = "list author"> <!-- remove empty spaces between = -->
         <input name='contentActivity' placeholder = "content activity">
         <input name='contentLocation' placeholder = "content location">
         <input name='contentGoal' placeholder = "content goal_date">
@@ -34,7 +34,7 @@
     <div id="map_wrapper">
       <div id="map_canvas" class="mapping"></div>
   </div>
-    <!-- <div id="map"></div> -->
+    <!-- <div id="map"></div> remove commented out code -->
       <div>
         <!-- <input id="address" type="textbox" placeholder="Enter a City"> -->
         <input id="submit" type="button" value="Newest Location" >

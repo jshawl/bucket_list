@@ -3,6 +3,7 @@ var List = function(info){
   this.name = info.name;
   this.author = info.author;
   this.id = info.id
+  // maybe this.contents = ??
 }
 
 List.fetch = function() {
@@ -10,18 +11,18 @@ List.fetch = function() {
   .then(function(response) {
     var lists = []
     for(var i = 0; i < response.length; i++) {
-      lists.push(new List(response[i]))
+      lists.push(new List(response[i])) // excellent
     }
     return lists
   })
   .fail(function(response) {
-    console.log("list fetch failed to load")
+    console.log("list fetch failed to load") // would be useful to share with user
   })
   return request
 };
 
 List.create = function(listData) {
-  var self = this;
+  var self = this; //do you need this?
   var url = "/lists";
   var request = $.ajax({
     url: url,
@@ -55,7 +56,7 @@ List.prototype = {
     var url = "/lists/" + this.id;
     var request = $.ajax({
       url: url,
-      method: "put",
+      method: "put", //or patch?
       data: JSON.stringify(listData),
       contentType : 'application/json'
     }).then(
@@ -69,7 +70,7 @@ List.prototype = {
     return request;
   },
   reload: function(newData){
-    for(var attrname in newData) {
+    for(var attrname in newData) { //hell yeah!!
       this[attrname] = newData[attrname];
     }
   }

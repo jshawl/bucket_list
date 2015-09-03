@@ -3,12 +3,12 @@ var router = express.Router();
 var Content = require("../db/connection").models.Content;
 var List = require("../db/connection").models.List;
 
-function error(response, message){
+function error(response, message){ // move to index to have global function
   response.status(500);
   response.json({error: message})
 }
 
-//Content index page
+//Content index page // helpful comments!
 router.get("/contents", function(req, res){
   Content.findAll({order: "id"}).then(function(contents){
     res.json(contents);
@@ -17,6 +17,7 @@ router.get("/contents", function(req, res){
 
 router.post("/contents", function(req, res){
   Content.create(req.body).then(function(content){
+    // can use error handling here
     res.json(content);
   });
 });
@@ -26,6 +27,9 @@ router.get("/contents/:id", function(req, res){
     res.json(content);
   });
 });
+
+// i really like the above! allows the user to view all contents without
+// looking at one list or another.
 
 //Show all content for an individual list item
 router.get("/lists/:listId/contents", function(req, res){
@@ -51,11 +55,16 @@ router.post("/lists/:listId/contents", function(req, res){
   });
 });
 
+// excellent restful routes and code comments!
+// missing delete for /lists/:id/contents/:id
+// will deleting a list also delete its contents?
+
 //Update
 router.patch("/contents/:id", function(req, res){
   Content.findById(req.params.id).then(function(content){
     if(!content) return error(res, "not found");
     content.updateAttributes(req.body).then(function(content){
+      // could have error handling here as well
       res.json(content);
     });
   });

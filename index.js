@@ -14,11 +14,11 @@ var contentsController = require("./controllers/contents");
 
 
 app.get("/", function(req, res){
-  res.render("index", {})
+  res.render("index", {}) // can remove empty object here
 });
 
 
-app.use("/", listsController);
+app.use("/", listsController); //nice!
 app.use("/", contentsController);
 
 

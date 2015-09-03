@@ -1,5 +1,6 @@
 var Content = function(info){
-  this.location = info.location;
+  this.location = info.location; // perfect model!!! you can provide defaults like:
+  // this.someAttribute = info.someAttribute || "my default value"
   this.activity = info.activity;
   this.goal_date = info.goal_date;
   this.completed = info.completed;
@@ -36,19 +37,19 @@ Content.create = function(contentData) {
   return request;
 };
 
-  Content.update = function(id, data) {
-    var url = "/contents/" + id;
-    var request = $.ajax({
-      url: url,
-      method: "patch",
-      data: JSON.stringify(data),
-      contentType : 'application/json'
-    })
-    return request;
-  }
+Content.update = function(id, data) {
+  var url = "/contents/" + id;
+  var request = $.ajax({
+    url: url,
+    method: "patch",
+    data: JSON.stringify(data),
+    contentType : 'application/json'
+  })
+  return request;
+}
 
-  Content.delete = function(id){
-    var url = "/contents/" + id ;
-    var request = $.ajax( {url: url, method: "delete"});
-    return request;
-  }
+Content.delete = function(id){
+  var url = "/contents/" + id ;
+  var request = $.ajax( {url: url, method: "delete"});
+  return request;
+}

@@ -30,6 +30,8 @@ var contents = [
   {location: "Flagstaff", activity: "Camp", goal_date: "October 12, 2015", completed: false, listId: 5}
 ]
 
+// can you think of a way to not hardcode foreign key integers above?
+
 List.bulkCreate(lists).then(function(){
   return Content.bulkCreate(contents)
 })

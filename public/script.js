@@ -9,6 +9,6 @@ $(document).ready(function(){
 
   Content.fetch();
 
-  new newListView();
+  new newListView(); // will this be executed before List.fetch() returns?
 
 });

@@ -4,7 +4,7 @@ var ListView = function(list){
   this.$el = $("<div class='list'></div>");
   this.render();
 
-  $(".lists").append(this.$el);
+  $(".lists").append(this.$el); // can this be a part of render method?
 };
 
 ListView.prototype = {
@@ -37,7 +37,7 @@ ListView.prototype = {
 
   renderEditForm: function() {
     var self = this;
-    self.$el.html(this.listEditTemplate(this.list));
+    self.$el.html(this.listEditTemplate(this.list)); // recommend using self consistently here
 
     self.$el.find(".updateList").on("click", function() {
       self.updateList();
@@ -45,7 +45,7 @@ ListView.prototype = {
 
     self.$el.find(".deleteList").on("click", function(){
       self.list.delete().then(function(){
-        location.reload()
+        location.reload() // what is this doing? maybe self.$el.hide() is a better alternative?
       });
     });
   },
@@ -67,7 +67,7 @@ ListView.prototype = {
 
   toggleContents: function(contentsDiv){
     var self = this;
-    // if not in DOM, populate
+    // if not in DOM, populate //helpful comment!
     if(contentsDiv.children().length === 0){
       this.list.fetchContents().then(function(contents){
         self.appendContents(contents, contentsDiv);
@@ -75,12 +75,13 @@ ListView.prototype = {
     }
     // toggle (note: contentsDiv starts hidden)
     contentsDiv.toggle();
-    this.toggleButton(contentsDiv);
+    this.toggleButton(contentsDiv); // use self here
   },
   toggleGiphy: function(giphyDiv){
     var self = this;
     // if not in DOM, populate
-    if(giphyDiv.children().length === 0){
+    if(giphyDiv.children().length === 0){ // this code looks similar to the above
+    					  // can you think of a way to combine?
       this.list.fetchContents().then(function(giphy){
         self.appendGiphy(giphy, giphyDiv);
       });
@@ -91,10 +92,12 @@ ListView.prototype = {
   },
 
   appendContents: function(contents, contentsDiv){
-    // contentsDiv.append("<button id='editContent'>Edit Content</button>");
+    // contentsDiv.append("<button id='editContent'>Edit Content</button>"); // remove old code
     contentsDiv.append("<button id='addContent'>Add Content</button>");
     contents.forEach(function(content){
       var contentView = new ContentView(content);
+      // it would be great if the following happened all from line 98
+      // maybe in your constructor function?
       var group = contentView.activity();
       group.append(contentView.location());
       group.append(contentView.goal_date());
@@ -105,16 +108,19 @@ ListView.prototype = {
       group.append("<button class='deleteContent'>Delete Content</button>");
 })
 $(".deleteContent").on("click", function(event){
-  event.stopPropagation();
+  event.stopPropagation(); //nice!
   var ul = $(event.target).closest("ul")
   var id = (ul.attr("data-id"))
   console.log("Delete Button CLICKED", id)
   Content.delete(id)
   .then(function(){
-    location.reload()
+    location.reload() // or fade out or hide? what does this line do?
   });
 });
 $("ul[data-id]").on("click", function(event) {
+  // I know we worked together on this, and Im happy you got it working!
+  // Can you think of a way to make this less procedural and move into
+  // a prototype method? something you could invoke with listview?
   event.stopPropagation()
   var ul = $(event.target).closest("ul")
   var li = $(event.target).closest("li")
@@ -130,6 +136,7 @@ $("ul[data-id]").on("click", function(event) {
   var location = $("<input placeholder='LOCATION'>")
   var goal_date = $("<input placeholder='GOAL DATE'>")
   var completed = $("<input placeholder='TRUE OR FALSE'>")
+  // also excellent opportunity to use Handlebars templating on client side.
   form.append(activity)
   form.append(location)
   form.append(goal_date)
@@ -139,12 +146,12 @@ $("ul[data-id]").on("click", function(event) {
   submit.on("click", function(event){
     event.preventDefault();
     console.log("sub button click")
-  Content.update(id, {
-    activity: activity.val(),
-    location: location.val(),
-    goal_date: goal_date.val(),
-    completed: completed.val()
-  })
+    Content.update(id, {
+      activity: activity.val(),
+      location: location.val(),
+      goal_date: goal_date.val(),
+      completed: completed.val()
+    })
     form.remove()
   }.bind(this))
 
@@ -183,6 +190,10 @@ $("ul[data-id]").on("click", function(event) {
         contentsDiv.append(view.completed());
         form.remove()
       }.bind(this))
+      // the above code is almost identical to your "edit content"
+      // code. How could you combine these?
+      // Also, i recommend moving this code to a contenview.js file
+      // to keep organized.
       // create new form
       console.log($(this).closest(".contents"))
 
@@ -202,7 +213,7 @@ $("ul[data-id]").on("click", function(event) {
                   name:   $('input[name=name]').val()
                  };
     self.list.update(data)
-    .then(function() { self.render();
+    .then(function() { self.render(); // what happens if the list doesn't update?
     });
   },
 
@@ -215,6 +226,7 @@ $("ul[data-id]").on("click", function(event) {
     html.append("<div class='contents'></div>");
     html.append("<div class='giphy'></div>")
     return(html);
+    // excellent! consider creating a method like this for the above html tags you have.
   },
 
   listEditTemplate: function(list) {

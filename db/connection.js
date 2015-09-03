@@ -15,6 +15,7 @@ if (process.env.DATABASE_URL) {
 var List = db_connection.import("../models/list");
 var Content = db_connection.import("../models/content");
 
+// remove empty space
 
 
 List.hasMany(Content);
@@ -22,7 +23,7 @@ Content.belongsTo(List);
 
 module.exports = {
   sql: Sequelize,
-  do: db_connection,
+  do: db_connection, // what does `do` mean in this context?
   models: {
     List: List,
     Content: Content
